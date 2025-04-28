@@ -2,7 +2,7 @@
 
 This project extracts structured information from insurance documents (PDF or TXT) using an LLM (currently configured for OpenAI).
 
-![UI Overview](path/to/Screenshot-UI.jpeg)
+![UI Overview](/Screenshot-UI.jpeg)
 
 ## Features
 
