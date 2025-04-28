@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Insurance Document Parser</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        #result, #cost { margin-top: 20px; padding: 10px; border: 1px solid #ccc; background: #f9f9f9; }
+    </style>
+</head>
+<body>
+
+    <h1>Insurance Document Parser</h1>
+
+    <form id="upload-form">
+        <label for="model-select">Choose a Model:</label>
+        <select id="model-select" name="model">
+            <option value="gpt-3.5-turbo" selected>gpt-3.5-turbo</option>
+            <option value="gpt-4">gpt-4</option>
+            <option value="gpt-4-turbo-2024-04-09">gpt-4-turbo (128K context)</option>
+            <!-- Add more models if needed -->
+        </select>
+    
+        <br><br>
+    
+        <input type="file" id="file-input" name="file" accept=".pdf,.txt" required />
+        <br><br>
+    
+        <button type="submit">Upload and Parse</button>
+    </form>
+    
+
+<div id="result">
+    <h3>Extracted Data:</h3>
+    <pre id="structured-data">Waiting for document...</pre>
+</div>
+
+<div id="cost">
+    <h3>LLM Cost:</h3>
+    <p id="llm-cost">Waiting for result...</p>
+</div>
+
+<script>
+document.getElementById('upload-form').addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const fileInput = document.getElementById('file-input');
+    if (!fileInput.files.length) {
+        alert('Please select a file.');
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append('file', fileInput.files[0]);
+
+    const selectedModel = document.getElementById('model-select').value;
+    formData.append('llm_provider', 'openai');
+    formData.append('model', selectedModel);
+
+    const response = await fetch('/upload/', {
+        method: 'POST',
+        body: formData
+    });
+
+    if (response.ok) {
+        const data = await response.json();
+        document.getElementById('structured-data').textContent = JSON.stringify(data.extracted_data, null, 2);
+        document.getElementById('llm-cost').textContent = `$${data.cost}`;
+    } else {
+        const error = await response.json();
+        document.getElementById('structured-data').textContent = `Error: ${error.detail}`;
+        document.getElementById('llm-cost').textContent = `-`;
+    }
+});
+
+</script>
+
+</body>
+</html>

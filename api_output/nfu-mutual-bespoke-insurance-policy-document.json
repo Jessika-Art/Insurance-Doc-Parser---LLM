@@ -1,0 +1,31 @@
+{
+    "policyholder_name": "Steve Bower",
+    "policy_number": "117664",
+    "start_date": "2014-01-01",
+    "end_date": null,
+    "coverage_types": [
+        "Buildings",
+        "Contents",
+        "Holiday accommodation",
+        "Homeworker",
+        "Smallholder",
+        "Valuables",
+        "Fine Art and Collections",
+        "Dog and cat - Loss of animal",
+        "Dog and cat - Vet's fees",
+        "Public Liability",
+        "Employers' Liability",
+        "Personal legal expenses",
+        "Business legal expenses",
+        "Personal Cyber",
+        "Home emergency",
+        "Annual travel",
+        "Terrorism"
+    ],
+    "risk_factors": [
+        "Epidemic, Pandemic and Coronavirus",
+        "Illegal activities",
+        "Pollution and contamination",
+        "Radioactivity"
+    ]
+}
