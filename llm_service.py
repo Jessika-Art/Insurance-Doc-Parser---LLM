@@ -178,7 +178,7 @@ if __name__ == '__main__':
     # Replace with actual text from a test document
     test_text = """
     INSURANCE POLICY
-    Policyholder: John Doe
+    Policyholder: Mary Red
     Policy Number: ABC123456789
     Effective Date: 2024-01-01
     Expiration Date: 2025-01-01
